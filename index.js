@@ -19,7 +19,20 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  }
+  },
+  
+  verifyUserEmails: true,
+  publicServerURL: 'https://wudju-server.herokuapp.com/parse',
+  appName: 'wudju',
+  emailAdapter: { 
+      module: 'parse-server-simple-mailgun-adapter',
+      options: { 
+                fromAddress: 'wudju@example.com',
+                domain: 'sandboxebc922c8e5c043d7adf2dd4019e10f13.mailgun.org', 
+                apiKey: 'feb2237e6267ea3d6dcf00292430e4ee-f45b080f-aaac0840', 
+              }
+  },
+
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
