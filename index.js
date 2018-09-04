@@ -25,7 +25,7 @@ var api = new ParseServer({
   publicServerURL: 'https://wudju-server.herokuapp.com/parse',
   appName: 'wudju',
   emailAdapter: { 
-      module: 'parse-server-simple-mailgun-adapter',
+      module:'@parse/simple-mailgun-adapter',
       options: { 
                 fromAddress: 'wudju@example.com',
                 domain: 'sandboxebc922c8e5c043d7adf2dd4019e10f13.mailgun.org', 
