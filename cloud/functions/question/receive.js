@@ -8,11 +8,11 @@ Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, res){
     qQuestion.limit(limit);
     qQuestion.descending("createdAt");
     qQuestion.equalTo("creator", currentUser);
-    qQuestion.find()
-        .then((results) => {
-            res.success(results);
-        })
-        .catch((error) =>  {
-            res.error("Failed to read Questions by User", error);
-        });
+     qQuestion.find()
+    .then((results) => {
+      res.success(results);
+    })
+    .catch(() =>  {
+      res.error("Failed to read Questions by User");
+    });
 });
