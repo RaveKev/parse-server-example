@@ -8,9 +8,21 @@ Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, res){
     qQuestion.descending("createdAt");
     qQuestion.equalTo("creator", currentUser);
     */
+
+/*
+qQuestion.find(null, {
+useMasterKey: true,
+success: function(results){
+    res.success(results);
+},
+error: function(obj, error) {
+    res.error(error.message);
+}
+});*/
+
 qQuestion.find().then(function(results) {
-    response.success(results);
+    res.success(results);
   }, function(error) {
-    response.error(error);
+    res.error(error);
   });
 });
