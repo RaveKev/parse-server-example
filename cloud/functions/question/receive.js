@@ -1,4 +1,4 @@
-Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, res){
+Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, response){
     
     var currentUser = req.user;
     var limit = (req.limit === undefined) ? 5 : req.limit;
@@ -10,9 +10,11 @@ Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, res){
     */
 
 qQuestion.find().then(function(results) {
-    res.success(results);
+    console.log(results);
+    console.log(results.toJSON());
+    response.success(results);
   }, function(error) {
-    res.error(error);
+    response.error(error);
   });
 
 });
