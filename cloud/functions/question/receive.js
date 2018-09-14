@@ -11,7 +11,6 @@ Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, response){
 
 qQuestion.find().then(function(results) {
     console.log(results);
-    console.log(results.toJSON());
     response.success(results);
   }, function(error) {
     response.error(error);
