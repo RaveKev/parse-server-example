@@ -7,10 +7,10 @@ Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, res){
     var qQuestion = new Parse.Query(Question);
     qQuestion.limit(limit);
     qQuestion.descending("createdAt");
-    qQuestion.equalTo("creator", currentUser);
+    //qQuestion.equalTo("creator", currentUser);
 
 qQuestion.find().then(function(results) {
-    response.success(locations);
+    response.success(results);
   }, function(error) {
     response.error(error);
   });
