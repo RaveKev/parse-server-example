@@ -20,7 +20,7 @@ var api = new ParseServer({
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
-  
+  push: JSON.parse(process.env.PARSE_SERVER_PUSH || "{}"),
   verifyUserEmails: true,
   publicServerURL: 'https://wudju-server.herokuapp.com/parse',
   appName: 'wudju',
