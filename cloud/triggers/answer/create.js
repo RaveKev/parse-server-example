@@ -7,14 +7,14 @@ Parse.Cloud.afterSave("Answer", function(request) {
     .then(function(question) {
         console.log("found a question!");
 
-        question.increment("voters");
+        question.increment("voters", 1);
         if(request.object.get("answer") == "Y"){
-            question.increment("votedYes");
+            question.increment("votedYes", 1);
         }
         if(request.object.get("answer") == "N"){
-            question.increment("votedNo");
+            question.increment("votedNo", 1);
         }
-        
+
       console.log("after incrementing");
       console.log(question);
       return question.save(null, {useMasterKey:true});
