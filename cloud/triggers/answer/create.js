@@ -14,8 +14,10 @@ Parse.Cloud.afterSave("Answer", function(request) {
         if(request.object.get("answer") == "N"){
             question.increment("votedNo");
         }
+        
+      console.log("after incrementing");
       console.log(question);
-      return question.save();
+      return question.save(null, {useMasterKey:true});
     })
     .catch(function(error) {
       console.error("Got an error " + error.code + " : " + error.message);
