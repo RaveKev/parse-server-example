@@ -7,7 +7,7 @@ const query = new Parse.Query("Question");
   query.get(request.object.get("question"))
     .then(function(post) {
       post.increment("voters", +1);
-      return post.save();
+      return post.save(null, {useMasterKey:true});
     })
     .catch(function(error) {
       console.error("Got an error " + error.code + " : " + error.message);
