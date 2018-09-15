@@ -4,7 +4,7 @@ Parse.Cloud.afterSave("Answer", function(request) {
 
 
 const query = new Parse.Query("Question");
-  query.get(request.object.get("question"))
+  query.get(request.object.get("question").id)
     .then(function(post) {
       post.increment("voters", +1);
       return post.save(null, {useMasterKey:true});
