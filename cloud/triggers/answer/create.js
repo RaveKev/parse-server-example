@@ -10,7 +10,7 @@ Parse.Cloud.afterSave("Answer", function(request) {
             question.increment("votedNo");
         }
       
-      return question.save();
+      return question.save(nul, {useMasterKey:true});
     })
     .catch(function(error) {
       console.error("Got an error " + error.code + " : " + error.message);
