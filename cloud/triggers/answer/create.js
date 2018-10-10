@@ -25,6 +25,7 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     var user = request.user;
     console.log(user);
     var userQuery = new Parse.Query(Parse.User);
+    userQuery.select("gender", "branch", "birthyear", "zip", "school", "marital", "children");
     userQuery.equalTo("objectId", user.id);
 
     userQuery.first().then(function(results) {
