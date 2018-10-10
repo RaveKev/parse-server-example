@@ -20,7 +20,7 @@ Parse.Cloud.afterSave("Answer", function(request) {
         });
 });
 
-Parse.Cloud.beforeSave("Answer", function(request, response) {
+/*Parse.Cloud.beforeSave("Answer", function(request, response) {
     console.log('*** Cloud beforesave\'s request = ', request);
     var user = request.user;
     console.log(user);
@@ -49,3 +49,4 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     });
 
 });
+*/
