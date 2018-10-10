@@ -1,6 +1,6 @@
-Parse.Cloud.afterSave(Parse.User, function(request) {
-    console.log("Parse.Cloud.afterSave: ");
-    request.log.info("Parse.Cloud.afterSave: "); // For back4app user
+Parse.Cloud.beforeSave(Parse.User, function(request) {
+    console.log("Parse.Cloud.beforeSave: ");
+    request.log.info("Parse.Cloud.beforeSave: "); // For back4app user
     console.log(request);
 
     console.log(request.object);
