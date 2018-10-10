@@ -32,14 +32,15 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
 
     qProfile.first().then(function(results) {
         profileData = Parse.Object.fromJSON(results);
-        request.object.set("gender", profileData.gender);
-        request.object.set("birthyear", profileData.birthyear);
-        request.object.set("marital", profileData.marital);
-        request.object.set("children", profileData.children);
-        request.object.set("zip", profileData.zip);
-        request.object.set("branch", profileData.branch);
-        request.object.set("school", profileData.school);
-        request.object.set("income", profileData.income);
+        console.log(profileData);
+        request.object.set("gender", (profileData.gender ? profileData.gender : "NA"));
+        request.object.set("birthyear", (profileData.birthyear ? profileData.birthyear : "NA"));
+        request.object.set("marital", (profileData.marital ? profileData.marital : "NA"));
+        request.object.set("children", (profileData.children ? profileData.children : "NA"));
+        request.object.set("zip", (profileData.zip ? profileData.zip : "NA"));
+        request.object.set("branch", (profileData.branch ? profileData.branch : "NA"));
+        request.object.set("school", (profileData.school ? profileData.school : "NA"));
+        request.object.set("income", (profileData.income ? profileData.income : "NA"));
     });
 
 });
