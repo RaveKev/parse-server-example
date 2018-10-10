@@ -24,4 +24,13 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     console.log('*** Cloud beforesave\'s request = ', request);
     var user = request.user;
     console.log(user);
+    var userQuery = new Parse.Query(Parse.User);
+    userQuery.equalTo("objectId", user.id);
+
+    userQuery.first().then(function(results) {
+        // each of results will only have the selected fields available.
+        console.log("userQuery: ");
+        console.log(results);
+    });
+
 });
