@@ -32,6 +32,7 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     qProfile.first().then(function(results) {
         console.log("FoundProfile: ");
         console.log(results);
+        console.log("---------------------------------------------------------");
         request.object.set("gender", results.attributes.gender);
     });
 
