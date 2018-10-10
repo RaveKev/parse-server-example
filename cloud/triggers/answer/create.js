@@ -27,18 +27,16 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
 
     var profileTable = Parse.Object.extend("Profile")
     var qProfile = new Parse.Query(profileTable);
-    qProfile.select("gender", "birthyear");
+    qProfile.select("gender", "birthyear", "marital", "children", "zip", "branch", "school", "income");
     qProfile.equalTo("user", user);
 
     qProfile.first().then(function(results) {
-        console.log("in first: ");
-        console.log(results);
-        console.log(results.toJSON())
-        console.log(Parse.Object.fromJSON(results));
-        profileData = Parse.Object.fromJSON(results);
-        console.log("ProfileData");
-        console.log(profileData);
-        /*request.object.set("gender", (profileData.gender ? profileData.gender : "NA"));
+        profileDataJson = results.toJSON();
+
+        console.log(profileDataJson);
+        console.log(profileDataJson['gender']);
+
+        request.object.set("gender", (profileDataJson['gender' ? profileDataJson['gender': "NA"));
         request.object.set("birthyear", (profileData.birthyear ? profileData.birthyear : "NA"));
         request.object.set("marital", (profileData.marital ? profileData.marital : "NA"));
         request.object.set("children", (profileData.children ? profileData.children : "NA"));
@@ -47,7 +45,7 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
         request.object.set("school", (profileData.school ? profileData.school : "NA"));
         request.object.set("income", (profileData.income ? profileData.income : "NA"));
 
-        console.log(request.object);*/
+        console.log(request.object);
     });
 
 });
