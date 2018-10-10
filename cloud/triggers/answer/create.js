@@ -7,11 +7,11 @@ Parse.Cloud.afterSave("Answer", function(request) {
     query.get(request.object.get("question").id)
         .then(function(question) {
             question.increment("voters", 1);
-            if(request.object.get("answer") == "Y"){
-                question.increment("votedYes", 1);
+            if(request.object.get("answer") == "1"){
+                question.increment("voted1", 1);
             }
-            if(request.object.get("answer") == "N"){
-                question.increment("votedNo", 1);
+            if(request.object.get("answer") == "0"){
+                question.increment("voted0", 1);
             }
           return question.save(null, {useMasterKey:true});
         })
@@ -20,7 +20,7 @@ Parse.Cloud.afterSave("Answer", function(request) {
         });
 });
 
-/*Parse.Cloud.beforeSave("Answer", function(request, response) {
+Parse.Cloud.beforeSave("Answer", function(request, response) {
     console.log('*** Cloud beforesave\'s request = ', request);
     var user = request.user;
     console.log(user);
@@ -49,4 +49,3 @@ Parse.Cloud.afterSave("Answer", function(request) {
     });
 
 });
-*/
