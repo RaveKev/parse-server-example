@@ -25,15 +25,14 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     var user = request.user;
     console.log(user);
 
-    var userTable = Parse.Object.extend("User")
-    var userQuery = new Parse.Query(userTable);
-    userQuery.select("gender", "branch", "birthyear", "zip", "school", "marital", "children");
-    userQuery.equalTo("objectId", user.id);
+    var profileTable = Parse.Object.extend("Profile")
+    var qProfile = new Parse.Query(profileTable);
+    qProfile.equalTo("user", user);
 
-    userQuery.first().then(function(results) {
-        // each of results will only have the selected fields available.
-        console.log("userQuery: ");
+    qProfile.first().then(function(results) {
+        console.log("FoundProfile: ");
         console.log(results);
+        request.object.set("gender", results.attributes.gender);
     });
 
 });

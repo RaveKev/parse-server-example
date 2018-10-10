@@ -2,7 +2,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
     console.log("Parse.Cloud.afterSave: ");
     request.log.info("Parse.Cloud.afterSave: "); // For back4app user
     console.log(request);
-    
+
     console.log(request.object);
     if (request.object.existed() === false) {
         var Profile = Parse.Object.extend("Profile");
