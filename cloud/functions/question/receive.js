@@ -1,7 +1,7 @@
 Parse.Cloud.define("receiveQuestionOverviewByUser", function(req, response){
     
     var currentUser = req.user;
-    var limit = (req.limit === undefined) ? 5 : req.limit;
+    var limit = (req.limit === undefined) ? 8 : req.limit;
     
     var qQuestion = new Parse.Query("Question");
     /*qQuestion.limit(limit);

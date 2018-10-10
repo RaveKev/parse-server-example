@@ -1,6 +1,8 @@
 Parse.Cloud.afterSave("Answer", function(request) {
     console.log(request.object);
+    console.log(request);
     console.log("Try to edit the answers an voters");
+
 
   const query = new Parse.Query("Question");
   query.get(request.object.get("question").id)
