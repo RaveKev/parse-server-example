@@ -3,6 +3,8 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
         request.object.fetch().then(function(user){
             var Profile = Parse.Object.extend("Profile");
             var profile = new Profile();
+            return profile.save();
+        }).then(function(profile) {
             request.object.set("profile", profile);
             response.success();
         });
