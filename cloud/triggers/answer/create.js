@@ -1,6 +1,7 @@
 Parse.Cloud.afterSave("Answer", function(request) {
     console.log(request.object);
     console.log(request);
+    console.log(request.object.get("answerer").attributes);
     console.log("Try to edit the answers an voters");
 
 
