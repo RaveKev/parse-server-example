@@ -36,7 +36,7 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
         console.log(profileDataJson);
         console.log(profileDataJson['gender']);
 
-        request.object.set("gender", (profileDataJson['gender' ? profileDataJson['gender': "NA"));
+        request.object.set("gender", (profileDataJson['gender'] ? profileDataJson['gender'] : "NA"));
         request.object.set("birthyear", (profileData.birthyear ? profileData.birthyear : "NA"));
         request.object.set("marital", (profileData.marital ? profileData.marital : "NA"));
         request.object.set("children", (profileData.children ? profileData.children : "NA"));
