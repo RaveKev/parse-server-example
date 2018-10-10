@@ -27,16 +27,19 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
 
     var profileTable = Parse.Object.extend("Profile")
     var qProfile = new Parse.Query(profileTable);
-    qProfile.select("gender");
+    qProfile.select("gender", "birthyear", "marital", "children", "zip", "branch", "school", "income");
     qProfile.equalTo("user", user);
 
     qProfile.first().then(function(results) {
-        console.log("FoundProfile: ");
-        console.log(results);
-        console.log(results.toJSON());
-        console.log(Parse.Object.fromJSON(results));
-        console.log("---------------------------------------------------------");
-        request.object.set("gender", results.attributes.gender);
+        profileData = Parse.Object.fromJSON(results);
+        request.object.set("gender", profileData.gender);
+        request.object.set("birthyear", profileData.birthyear);
+        request.object.set("marital", profileData.marital);
+        request.object.set("children", profileData.children);
+        request.object.set("zip", profileData.zip);
+        request.object.set("branch", profileData.branch);
+        request.object.set("school", profileData.school);
+        request.object.set("income", profileData.income);
     });
 
 });
