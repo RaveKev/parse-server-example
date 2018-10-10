@@ -1,4 +1,4 @@
-Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+/*Parse.Cloud.beforeSave(Parse.User, function(request, response) {
     if (request.object.get("profile") == null) {
         request.object.fetch().then(function(user){
             var Profile = Parse.Object.extend("Profile");
@@ -13,7 +13,7 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
         response.success();
     }
 });
-
+*/
 Parse.Cloud.afterSave(Parse.User, function(request) {
     console.log("Parse.Cloud.afterSave: ");
     request.log.info("Parse.Cloud.afterSave: "); // For back4app user
@@ -21,10 +21,10 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
 
     console.log(request.object);
 
-   /* if (request.object.existed() === false) {
+    if (request.object.existed() === false) {
         var Profile = Parse.Object.extend("Profile");
         var qProfile = new Profile();
         qProfile.set("user", request.object);
         qProfile.save();
-    }*/
+    }
 });
