@@ -31,6 +31,8 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     qProfile.equalTo("user", user);
 
     qProfile.first().then(function(results) {
+        console.log("in first: ");
+        console.log(results);
         profileData = Parse.Object.fromJSON(results);
         console.log(profileData);
         request.object.set("gender", (profileData.gender ? profileData.gender : "NA"));
