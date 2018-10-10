@@ -37,13 +37,13 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
         console.log(profileDataJson['gender']);
 
         request.object.set("gender", (profileDataJson['gender'] ? profileDataJson['gender'] : "NA"));
-        request.object.set("birthyear", (profileData.birthyear ? profileData.birthyear : "NA"));
-        request.object.set("marital", (profileData.marital ? profileData.marital : "NA"));
-        request.object.set("children", (profileData.children ? profileData.children : "NA"));
-        request.object.set("zip", (profileData.zip ? profileData.zip : "NA"));
-        request.object.set("branch", (profileData.branch ? profileData.branch : "NA"));
-        request.object.set("school", (profileData.school ? profileData.school : "NA"));
-        request.object.set("income", (profileData.income ? profileData.income : "NA"));
+        request.object.set("birthyear", (profileDataJson['birthyear'] ? profileDataJson['birthyear'] : "NA"));
+        request.object.set("marital", (profileDataJson['marital'] ? profileDataJson['marital'] : "NA"));
+        request.object.set("children", (profileDataJson['children'] ? profileDataJson['children'] : "NA"));
+        request.object.set("zip", (profileDataJson['zip'] ? profileDataJson['zip'] : "NA"));
+        request.object.set("branch", (profileDataJson['branch'] ? profileDataJson['branch'] : "NA"));
+        request.object.set("school", (profileDataJson['school'] ? profileDataJson['school'] : "NA"));
+        request.object.set("income", (profileDataJson['income'] ? profileDataJson['income'] : "NA"));
 
         console.log(request.object);
     });
