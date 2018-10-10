@@ -27,7 +27,7 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
 
     var profileTable = Parse.Object.extend("Profile")
     var qProfile = new Parse.Query(profileTable);
-    qProfile.select("gender", "birthyear", "marital", "children", "zip", "branch", "school", "income");
+    qProfile.select("gender", "birthyear");
     qProfile.equalTo("user", user);
 
     qProfile.first().then(function(results) {
@@ -43,6 +43,8 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
         request.object.set("branch", (profileData.branch ? profileData.branch : "NA"));
         request.object.set("school", (profileData.school ? profileData.school : "NA"));
         request.object.set("income", (profileData.income ? profileData.income : "NA"));
+
+        console.log(request.object);
     });
 
 });
