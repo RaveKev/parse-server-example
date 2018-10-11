@@ -39,7 +39,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
             q.set("value0", "Nein");
             q.set("value1", "Ja");
             q.save();
-        });
+        }); 
     });
 
 });
