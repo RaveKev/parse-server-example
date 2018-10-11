@@ -35,12 +35,12 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
 
 
     qQuestion.find().then(function (questions) {
-        //console.log(questions);
+        console.log(questions);
 
         questions.forEach(function(q) {
             console.log(q);
             q.set("voted0", q.attributes.votedNo);
-            q.set("voted1", q.attributes.votedYes;
+            q.set("voted1", q.attributes.votedYes);
             q.set("value0", "Nein");
             q.set("value1", "Ja");
             q.save();
