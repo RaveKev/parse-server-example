@@ -30,7 +30,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
 
     var Question = Parse.Object.extend("Question");
     var qQuestion = new Parse.Query(Question);
-    qQuestion.limit(5);
+    qQuestion.limit(200);
 
     qQuestion.find().then(function (questions) {
         questions.forEach(function(q) {
