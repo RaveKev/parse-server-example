@@ -27,24 +27,4 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
         qProfile.set("user", request.object);
         qProfile.save();
     }
-
-    var Question = Parse.Object.extend("Question");
-    var qQuestion = new Parse.Query(Question);
-    qQuestion.notEqualTo("value0", "Nein");
-    qQuestion.limit(20);
-
-
-    qQuestion.find().then(function (questions) {
-        console.log(questions);
-
-        questions.forEach(function(q) {
-            console.log(q);
-            q.set("voted0", q.attributes.votedNo);
-            q.set("voted1", q.attributes.votedYes);
-            q.set("value0", "Nein");
-            q.set("value1", "Ja");
-            q.save();
-        });
-    });
-
 });
