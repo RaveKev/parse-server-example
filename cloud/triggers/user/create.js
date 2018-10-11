@@ -35,7 +35,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
 
 
     qQuestion.find().then(function (questions) {
-        console.log(questions);
+        //console.log(questions);
 
         questions.forEach(function(q) {
             console.log(q);
