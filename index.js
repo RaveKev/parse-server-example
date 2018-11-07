@@ -20,15 +20,7 @@ var api = new ParseServer({
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
-  push: JSON.parse(process.env.PARSE_SERVER_PUSH || "{android: {\n" +
-      "        apiKey: 'AAAAYDlI6jI:APA91bHycFmR1Y72q7zex9od36U019S5LGHGfoLxGwWCMmpjxbOzBmtF1JMFaSXpvylbzgWl3CNl5CJ_q-H5RF0WCxcppbx2qKjL1EoNpxvzlCF3AHQRL_KpTefy0H7zkMSrYTuUT4Hj'\n" +
-      "    },\n" +
-      "    ios: {\n" +
-      "        pfx: '', \n" +
-      "        passphrase: '',\n" +
-      "        bundleID: '',\n" +
-      "        production: false\n" +
-      "    }}"),
+  push: JSON.parse(process.env.PARSE_SERVER_PUSH || "{}"),
   verifyUserEmails: true,
   publicServerURL: 'http://localhost:1337/parse',
   appName: 'wudju',
