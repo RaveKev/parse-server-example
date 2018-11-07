@@ -14,23 +14,15 @@ if (!databaseUri) {
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'wudjuserver',
-  masterKey: process.env.MASTER_KEY || 'uCs74KG7rY4gAkGYRT', //Add your master key here. Keep it secret!
+  appId: process.env.APP_ID || 'myAppId',
+  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
-  push: JSON.parse(process.env.PARSE_SERVER_PUSH || "{android: {\n" +
-      "        apiKey: 'AAAAYDlI6jI:APA91bHycFmR1Y72q7zex9od36U019S5LGHGfoLxGwWCMmpjxbOzBmtF1JMFaSXpvylbzgWl3CNl5CJ_q-H5RF0WCxcppbx2qKjL1EoNpxvzlCF3AHQRL_KpTefy0H7zkMSrYTuUT4Hj'\n" +
-      "    },\n" +
-      "    ios: {\n" +
-      "        pfx: '', \n" +
-      "        passphrase: '',\n" +
-      "        bundleID: '',\n" +
-      "        production: false\n" +
-      "    }}"),
+  push: JSON.parse(process.env.PARSE_SERVER_PUSH || "{}"),
   verifyUserEmails: true,
-  publicServerURL: 'http://localhost:1337/parse',
+  publicServerURL: 'https://wudju-server.herokuapp.com/parse',
   appName: 'wudju',
   emailAdapter: { 
       module:'@parse/simple-mailgun-adapter',
