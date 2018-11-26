@@ -13,8 +13,8 @@ if (!databaseUri) {
 
 var pushConfig = {};
 
-if (process.env.FCM_API_KEY) {
-    pushConfig['android'] = { apiKey: process.env.FCM_API_KEY || ''};
+if (process.env.FIREBASE_API_KEY) {
+    pushConfig['android'] = { apiKey: process.env.FIREBASE_API_KEY || ''};
 }
 
 if (process.env.APNS_ENABLE) {
