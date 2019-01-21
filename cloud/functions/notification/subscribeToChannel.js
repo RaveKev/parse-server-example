@@ -20,13 +20,11 @@ Parse.Cloud.define("subscribeToChannel", function(request, response) {
   var user = new Parse.User();
   user.id = userId;
 
-  // Need the Master Key to update Installations
-  Parse.Cloud.useMasterKey();
-
   // A user might have more than one Installation
   var query = new Parse.Query(Parse.Installation);
   query.equalTo("user", user); // Match Installations with a pointer to this User
-  query.find({
+  query.find({ 
+    useMasterKey: true,
     success: function(installations) {
       for (var i = 0; i < installations.length; ++i) {
         // Add the channel to all the installations for this user
@@ -34,7 +32,8 @@ Parse.Cloud.define("subscribeToChannel", function(request, response) {
       }
 
       // Save all the installations
-      Parse.Object.saveAll(installations, {
+      Parse.Object.saveAll(installations, { 
+        useMasterKey: true,
         success: function(installations) {
           // All the installations were saved.
           response.success("All the installations were updated with this channel.");
