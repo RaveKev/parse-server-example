@@ -16,7 +16,8 @@ var pushConfig = {};
 if (process.env.FIREBASE_API_KEY) {
     pushConfig['android'] = { 
       apiKey: process.env.FIREBASE_API_KEY || '', 
-      senderID: process.env.FIREBASE_SENDER_ID};
+      senderID: process.env.FIREBASE_SENDER_ID
+    };
 }
 
 /*if (process.env.APNS_ENABLE) {
