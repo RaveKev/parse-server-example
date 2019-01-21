@@ -3,6 +3,7 @@
  * FUNCTIONS
  */
 require("./functions/question");
+require("./functions/notification");
 
 
 
