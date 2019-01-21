@@ -1,6 +1,6 @@
 Parse.Cloud.define("subscribeToChannel", function(request, response) {
   var channelName = request.params.channel;
-  var userId = request.params.userId;
+  var userId = request.user.id;
 
   console.log("*** SubscribeToChannel ***")
   console.log("channelName: ", channelName);
