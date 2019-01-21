@@ -18,15 +18,9 @@ Parse.Cloud.afterSave("Answer", function(request) {
         .catch(function(error) {
           console.error("Got an error " + error.code + " : " + error.message);
         });
-});
-
-Parse.Cloud.beforeSave("Answer", function(request, response) {
-    console.log('*** Cloud beforesave\'s request = ', request);
-    var user = request.user;
-    console.log(user);
-
+    
     Parse.Push.send({
-        channels: ['wudju-team'],
+        channels: ['main'],
         data: {
             alert: 'Neue Antwort',
             badge: 1,
@@ -37,6 +31,13 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     }, (e) =>{
         console.log('Push error: ', e);
     });
+
+});
+
+Parse.Cloud.beforeSave("Answer", function(request, response) {
+    console.log('*** Cloud beforesave\'s request = ', request);
+    var user = request.user;
+    console.log(user);
 
     var profileTable = Parse.Object.extend("Profile")
     var qProfile = new Parse.Query(profileTable);
