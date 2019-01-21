@@ -25,6 +25,19 @@ Parse.Cloud.beforeSave("Answer", function(request, response) {
     var user = request.user;
     console.log(user);
 
+    Parse.Push.send({
+        channels: ['wudju-team'],
+        data: {
+            alert: 'Neue Antwort',
+            badge: 1,
+            sound: 'default'
+        }
+    }, {useMasterKey: true}).then(() => {
+        console.log('Push ok');
+    }, (e) =>{
+        console.log('Push error: ', e);
+    });
+
     var profileTable = Parse.Object.extend("Profile")
     var qProfile = new Parse.Query(profileTable);
     qProfile.select("gender", "birthyear", "marital", "children", "zip", "branch", "school", "income");
