@@ -14,10 +14,12 @@ if (!databaseUri) {
 var pushConfig = {};
 
 if (process.env.FIREBASE_API_KEY) {
-    pushConfig['android'] = { apiKey: process.env.FIREBASE_API_KEY || ''};
+    pushConfig['android'] = { 
+      apiKey: process.env.FIREBASE_API_KEY || '', 
+      senderID: process.env.FIREBASE_SENDER_ID};
 }
 
-if (process.env.APNS_ENABLE) {
+/*if (process.env.APNS_ENABLE) {
     pushConfig['ios'] = [
         {
             pfx: 'ParsePushDevelopmentCertificate.p12', // P12 file only
@@ -25,7 +27,7 @@ if (process.env.APNS_ENABLE) {
             production: false // dev certificate
         }
     ]
-}
+}*/
 
 
 var api = new ParseServer({
