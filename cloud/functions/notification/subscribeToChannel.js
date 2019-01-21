@@ -26,14 +26,15 @@ Parse.Cloud.define("subscribeToChannel", function(request, response) {
   query.find({ 
     useMasterKey: true,
     success: function(installations) {
+      console.log("Installations count: ", installations.length);
       for (var i = 0; i < installations.length; ++i) {
         // Add the channel to all the installations for this user
         installations[i].addUnique("channels", channel);
       }
+      console.log("Installations: ", installations);
 
       // Save all the installations
       Parse.Object.saveAll(installations, { 
-        useMasterKey: true,
         success: function(installations) {
           // All the installations were saved.
           response.success("All the installations were updated with this channel.");
