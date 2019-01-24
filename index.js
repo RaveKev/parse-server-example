@@ -40,10 +40,11 @@ var api = new ParseServer({
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
-  push: {
+  push: { 
     android: {
     senderId: process.env.FIREBASE_SENDER_ID,
     apiKey: process.env.FIREBASE_API_KEY
+    }
   },
   verifyUserEmails: true,
   publicServerURL: 'http://localhost:1337/parse',
