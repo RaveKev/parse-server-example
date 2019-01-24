@@ -11,15 +11,15 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
-var pushConfig = {};
+/*var pushConfig = {};
 
 if (process.env.FIREBASE_API_KEY) {
     pushConfig['android'] = { 
       apiKey: process.env.FIREBASE_API_KEY || '', 
-      senderID: process.env.FIREBASE_SENDER_ID
+      senderID: process.env.FIREBASE_SENDER_ID || ''
     };
 }
-
+*/
 /*if (process.env.APNS_ENABLE) {
     pushConfig['ios'] = [
         {
@@ -40,7 +40,11 @@ var api = new ParseServer({
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
-  push: pushConfig,
+  push: {
+    android: {
+    senderId: process.env.FIREBASE_SENDER_ID,
+    apiKey: process.env.FIREBASE_API_KEY
+  },
   verifyUserEmails: true,
   publicServerURL: 'http://localhost:1337/parse',
   appName: 'wudju',
