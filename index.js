@@ -38,7 +38,7 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || 'uCs74KG7rY4gAkGYRT', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
-    classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+    classNames: ["Answer", "Posts", "Comments"] // List of classes to support for query subscriptions
   },
   push: { 
     android: {
